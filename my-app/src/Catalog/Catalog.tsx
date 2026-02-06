@@ -5,7 +5,7 @@ import Pagination from '../Pagination/Pagination';
 import type { Product } from '../Product';
 import Filter from '../Filter/Filter';
 import Skeleton from '../Skeleton/Skeleton';
-import { useNavigate, useLocation } from "react-router-dom";
+import {useNavigate, useLocation, NavLink} from "react-router-dom";
 
 export default function Catalog() {
     const [card, setCard] = useState<Product[]>([]);
@@ -315,7 +315,7 @@ export default function Catalog() {
                             ) : (
                                 <>
                                     <p>Товары не найдены</p>
-                                    <button onClick={() => window.location.reload()}>Показать все</button>
+                                    <NavLink to='/catalog' onClick={() => window.location.reload()}>Показать все</NavLink>
                                 </>
                             )}
                         </div>

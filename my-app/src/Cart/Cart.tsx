@@ -1,6 +1,7 @@
 import s from './s.module.css';
 import { useEffect, useState } from "react";
 import type { Product }  from '../Product';
+import {NavLink} from "react-router-dom";
 
 export default function Cart() {
     const [cartItems, setCartItems] = useState<Product[]>(() => {
@@ -48,9 +49,9 @@ export default function Cart() {
                 <div className={s.emptyCart}>
                     <div className={s.emptyCartIcon}>🛒</div>
                     <h2 className={s.emptyCartTitle}>Ваша корзина пуста</h2>
-                    <a href="/catalog" className={s.continueShoppingBtn}>
+                    <NavLink to="/catalog" className={s.continueShoppingBtn}>
                         Перейти в каталог
-                    </a>
+                    </NavLink>
                 </div>
             </div>
         );
