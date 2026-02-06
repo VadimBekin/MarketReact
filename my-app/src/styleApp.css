@@ -74,7 +74,16 @@ html, body {
     border: #d3d3d3 solid 1px;
 }
 
+@media (max-width: 524px) {
+    .navbar-input {
+        margin: 0 10px;
 
+    }
+
+    .navbar-input input {
+
+    }
+}
 
 
 .lupa {
@@ -116,3 +125,4 @@ html, body {
     top: 19px;
     margin-left: 10px;
 }
+
