@@ -11,6 +11,9 @@ const routes = createBrowserRouter(
             <Route path='catalog' index element={<Catalog/>} />
             <Route path='cart' element={<Cart/>} />
         </Route>
-    )
+    ),
+    {
+        basename: '/MarketReact',
+    }
 )
 export default routes ;
