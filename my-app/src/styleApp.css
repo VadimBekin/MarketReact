@@ -1,0 +1,118 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #F5F7FA;
+}
+.app {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    color: #2c3e50;
+    background-color: #F5F7FA;
+    min-height: 100vh;
+
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background-color: whitesmoke;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 0 0 20px 20px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+
+}
+
+.navbar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #f1f3f6;
+    padding: 4px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: background 0.3s;
+    border: #d3d3d3 solid 1px;
+    height: 30px;
+}
+
+.navbar a:hover {
+    background-color: #d3d3d3;
+}
+
+
+.navbar-input {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin: 0 40px;
+
+}
+
+.navbar-input input:hover {
+    border-color: #adb5bd;
+}
+.navbar-input input:focus {
+    outline: none;
+    border-color: #7f8c8d;
+}
+.navbar-input input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    border-radius: 40px;
+    outline: none;
+    border: #d3d3d3 solid 1px;
+}
+
+
+
+
+.lupa {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+.lupa img {
+    width: 16px;
+    height: 16px;
+    margin-left: -40px;
+    z-index: 1;
+}
+.navbar-cart a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #27ae60;
+    font-size: 9px;
+    font-weight: bold;
+    border-radius: 50%;
+    min-width: 10px;
+    height: 10px;
+    padding: 1px;
+    border: 1px solid white;
+    position: absolute;
+    top: 19px;
+    margin-left: 10px;
+}
