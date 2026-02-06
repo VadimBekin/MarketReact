@@ -42,6 +42,27 @@ export default function App() {
         }
     }, [debouncedSearch, location.pathname, navigate, location.search]);
 
+
+    useEffect(() => {
+        const handleClearSearchInput = () => {
+            setSearchInput('');
+            if (inputRef.current) {
+                inputRef.current.value = '';
+                inputRef.current.focus();
+            }
+            if (window.location.pathname.includes('/MarketReact')) {
+                const url = new URL(window.location.href);
+                url.searchParams.delete('q');
+                window.history.replaceState({}, '', url);
+            }
+        };
+        window.addEventListener('clearSearchInput', handleClearSearchInput);
+        return () => {
+            window.removeEventListener('clearSearchInput', handleClearSearchInput);
+        };
+    }, []);
+
+
     const handleSearch = () => {
         if (!searchInput.trim()) {
             if (location.pathname === '/catalog' || location.pathname === '/') {
@@ -63,14 +84,20 @@ export default function App() {
         }
     };
 
-
+    const handleCatalogClick = () => {
+        window.dispatchEvent(new Event('clearSearchInput'));
+        setTimeout(() => {
+            window.dispatchEvent(new Event('clearSearchInput'));
+        }, 50);
+        navigate('/catalog', { replace: true });
+    }
 
     return (
         <div className='app'>
             <div className='container'>
                 <nav className='navbar'>
                     <div className='navbar-catalog'>
-                        <NavLink to='catalog'>
+                        <NavLink to='catalog' onClick={handleCatalogClick}>
                             Каталог
                         </NavLink>
                     </div>

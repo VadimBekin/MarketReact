@@ -5,7 +5,7 @@ import Pagination from '../Pagination/Pagination';
 import type { Product } from '../Product';
 import Filter from '../Filter/Filter';
 import Skeleton from '../Skeleton/Skeleton';
-import {useNavigate, useLocation, NavLink} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Catalog() {
     const [card, setCard] = useState<Product[]>([]);
@@ -16,6 +16,7 @@ export default function Catalog() {
     const [sortOption, setSortOption] = useState<string>('default');
     const [cartItems, setCartItems] = useState<Set<number>>(new Set());
     const navigate = useNavigate();
+
 
 
     const location = useLocation();
@@ -229,6 +230,18 @@ export default function Catalog() {
         );
     }
 
+    const handleShowAllProducts = () => {
+        setSearchQuery('');
+        setCurrentPage(1);
+        window.dispatchEvent(new Event('clearSearchInput'));
+        setTimeout(() => {
+            window.dispatchEvent(new Event('clearSearchInput'));
+        }, 50);
+        navigate('/catalog', { replace: true });
+    }
+
+
+
     return (
         <div className={s.catalog}>
             <div className={s.container}>
@@ -306,17 +319,17 @@ export default function Catalog() {
                     {!loading && filterAndSort.length === 0 && (
                         <div className={s.noProducts}>
                             {searchQuery ? (
-                                <>
+                                <div>
                                     <p>По запросу "{searchQuery}" ничего не найдено</p>
-                                    <button onClick={() => window.location.href = '/catalog'}>
+                                    <button onClick={handleShowAllProducts}>
                                         Показать все товары
                                     </button>
-                                </>
+                                </div>
                             ) : (
-                                <>
+                                <div>
                                     <p>Товары не найдены</p>
-                                    <NavLink to='/catalog' onClick={() => window.location.reload()}>Показать все</NavLink>
-                                </>
+                                    <button onClick={handleShowAllProducts}>Показать все</button>
+                                </div>
                             )}
                         </div>
                     )}
